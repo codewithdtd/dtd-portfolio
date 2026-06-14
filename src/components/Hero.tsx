@@ -40,8 +40,8 @@ export default function Hero() {
         </p>
 
         <div className="animate-fade-in-up flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <a href="#projects" className="btn-primary" onClick={(e) => { e.preventDefault(); document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' }); }}>
-            View Projects
+          <a href="#experience" className="btn-primary" onClick={(e) => { e.preventDefault(); document.querySelector('#experience')?.scrollIntoView({ behavior: 'smooth' }); }}>
+            Experience
           </a>
           <a href="#contact" className="btn-outline" onClick={(e) => { e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
             Contact Me
