@@ -5,8 +5,8 @@ import { personalInfo } from '../data/portfolio';
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -55,7 +55,7 @@ export default function Navbar() {
           }}
           className="text-xl font-bold text-grey-50 hover:text-accent transition-colors"
         >
-          {personalInfo.name.split(' ')[0]}
+          {personalInfo.name.split(' ')[0].split('')[0] + personalInfo.name.split(' ')[1].split('')[0] +  personalInfo.name.split(' ')[2].split('')[0] }
           <span className="text-accent">.</span>
         </a>
 
