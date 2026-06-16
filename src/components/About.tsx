@@ -18,7 +18,7 @@ export default function About() {
               <div className="absolute inset-0 rounded-2xl bg-accent/20 blur-xl animate-pulse-glow" />
               <div className="relative w-full h-full rounded-2xl border-2 border-accent/30 bg-grey-700 flex items-center justify-center overflow-hidden">
                 <div className="text-8xl font-bold text-accent/20 select-none">
-                  <img src="./src/data/me.png" alt="" className='w-full h-full object-cover'/>
+                  <img src="/src/data/me.png" alt="" className='w-full h-full object-cover'/>
                 </div>
               </div>
             </div>
