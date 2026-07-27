@@ -78,7 +78,7 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     role: 'Full Stack Developer',
-    company: 'Corsivalab Vietnam',
+    company: 'OTG Lab Vietnam',
     period: 'Oct 2025 - Present',
     achievements: [
       'Resolved critical MongoDB replica set synchronization failures (nodes stuck in recovering state), restoring system availability and ensuring data consistency.',
