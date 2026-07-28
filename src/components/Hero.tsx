@@ -22,7 +22,7 @@ export default function Hero() {
 
           <div className="flex flex-col items-center gap-4 sm:flex-row lg:items-start">
             <a
-              href="#projects"
+              href="#experience"
               className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-cyan-400 px-8 text-sm font-bold text-white shadow-[0_0_24px_rgba(14,165,233,0.4)] transition hover:scale-[1.02]"
             >
               View My Work
