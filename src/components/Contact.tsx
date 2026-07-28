@@ -6,7 +6,7 @@ export default function Contact() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section id="contact" className="section-padding bg-grey-850" ref={sectionRef}>
+    <section id="contact" className="section-padding bg-grey-850 h-fit" ref={sectionRef}>
       <div className="section-container max-w-4xl mx-auto text-center">
         <h2 className="section-heading reveal accent-underline mx-auto">Contact</h2>
         <p className="section-subheading reveal max-w-lg mx-auto">

@@ -1,7 +1,7 @@
 import { MapPin, Mail, Calendar, Briefcase } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { personalInfo } from '../data/portfolio';
-import meImg from '../data/me.png';
+import meImg from '../data/avt.jpg';
 
 export default function About() {
   const sectionRef = useScrollReveal();
@@ -27,7 +27,7 @@ export default function About() {
 
           {/* Bio & details */}
           <div className="md:col-span-3 space-y-6">
-            <p className="reveal text-grey-100 leading-relaxed text-lg">
+            <p lang="en" className="reveal text-grey-100 leading-relaxed text-lg text-left md:text-justify hyphens-auto [text-align-last:left]">
               {personalInfo.bio}
             </p>
 

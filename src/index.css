@@ -3,8 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-width: 320px;
+    background: #111827;
+  }
+
   ::selection {
-    background-color: rgba(34, 197, 94, 0.3);
+    background-color: rgba(0, 194, 255, 0.35);
     color: #e0e3e8;
   }
 
@@ -22,7 +31,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #22c55e;
+    background: #00c2ff;
   }
 }
 
@@ -49,7 +58,7 @@
 
   .accent-underline::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-16 h-1 bg-accent rounded-full -mb-2;
+    @apply absolute bottom-0 left-0 w-16 h-1 bg-cyan-400 rounded-full -mb-2;
   }
 
   .btn-primary {
@@ -65,6 +74,42 @@
   .card {
     @apply bg-grey-800 rounded-xl border border-grey-700/50 p-6 transition-all duration-300
     hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5;
+  }
+
+  .portfolio-panel {
+    @apply relative min-h-screen overflow-hidden bg-[#111827];
+  }
+
+  .portfolio-panel::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0;
+    background:
+      linear-gradient(90deg, rgba(0, 194, 255, 0.09), transparent 18%, transparent 78%, rgba(0, 194, 255, 0.12)),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 42%);
+  }
+
+  .panel-content {
+    @apply relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-center px-6 py-16 md:pl-28 md:pr-10 lg:pl-32 lg:pr-12;
+  }
+
+  .panel-title {
+    @apply text-3xl font-black tracking-normal text-white sm:text-4xl;
+  }
+
+  .panel-title span {
+    @apply text-sky-400;
+  }
+
+  .nav-rail {
+    @apply fixed left-5 top-1/2 z-50 hidden -translate-y-1/2 flex-col items-center gap-4 rounded-full border border-sky-300/15 bg-slate-800/70 px-3 py-5 text-slate-400 shadow-[0_0_26px_rgba(0,178,255,0.45)] backdrop-blur-md md:flex;
+  }
+
+  .nav-icon {
+    @apply flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 hover:bg-sky-400 hover:text-white hover:shadow-[0_0_18px_rgba(56,189,248,0.75)];
+  }
+
+  .nav-icon.active {
+    @apply bg-sky-400 text-white shadow-[0_0_20px_rgba(56,189,248,0.9)];
   }
 
   .reveal {

@@ -1,28 +1,24 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { personalInfo } from '../data/portfolio';
+import { Briefcase, Folder, GraduationCap, Home, Mail, Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '#home', icon: Home },
+  { label: 'Skills', href: '#skills', icon: Briefcase },
+  { label: 'Experience', href: '#experience', icon: GraduationCap },
+  { label: 'Projects', href: '#projects', icon: Folder },
+  { label: 'Contact', href: '#contact', icon: Mail },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      const sections = navLinks.map((l) => l.href.slice(1));
+      const sections = ['home', 'skills', 'experience', 'projects', 'contact'];
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
-        if (el && el.getBoundingClientRect().top <= 120) {
+        if (el && el.getBoundingClientRect().top <= 180) {
           setActiveSection(sections[i]);
           break;
         }
@@ -39,83 +35,59 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-grey-900/90 backdrop-blur-md border-b border-grey-700/50'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="section-container flex items-center justify-between h-16 md:h-20">
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className="text-xl font-bold text-grey-50 hover:text-accent transition-colors"
-        >
-          {personalInfo.name.split(' ')[0].split('')[0] + personalInfo.name.split(' ')[1].split('')[0] +  personalInfo.name.split(' ')[2].split('')[0] }
-          <span className="text-accent">.</span>
-        </a>
+    <>
+      <nav className="nav-rail" aria-label="Primary navigation">
+        {navLinks.map(({ label, href, icon: Icon }) => (
+          <a
+            key={`${label}-${href}`}
+            href={href}
+            onClick={(e) => {
+              e.preventDefault();
+              handleClick(href);
+            }}
+            className={`nav-icon ${activeSection === href.slice(1) ? 'active' : ''}`}
+            aria-label={label}
+            title={label}
+          >
+            <Icon size={17} />
+          </a>
+        ))}
+      </nav>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => {
-                e.preventDefault();
-                handleClick(link.href);
-              }}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                activeSection === link.href.slice(1)
-                  ? 'text-accent bg-accent-muted'
-                  : 'text-grey-200 hover:text-accent hover:bg-grey-800/50'
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        {/* Mobile toggle */}
+      <div className="fixed left-4 right-4 top-4 z-50 md:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-grey-200 hover:text-accent transition-colors"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-sky-300/20 bg-slate-900/85 text-sky-100 shadow-[0_0_18px_rgba(56,189,248,0.45)] backdrop-blur"
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-      </div>
 
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden transition-all duration-300 overflow-hidden ${
-          isOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <div className="section-container py-4 space-y-1 bg-grey-900/95 backdrop-blur-md border-b border-grey-700/50">
+        <div
+          className={`mt-3 overflow-hidden rounded-2xl border border-sky-300/15 bg-slate-900/95 shadow-2xl backdrop-blur transition-all duration-300 ${
+            isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
           {navLinks.map((link) => (
             <a
-              key={link.href}
+              key={`${link.label}-mobile`}
               href={link.href}
               onClick={(e) => {
                 e.preventDefault();
                 handleClick(link.href);
               }}
-              className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+              className={`flex items-center gap-3 px-4 py-3 text-sm font-semibold transition-all ${
                 activeSection === link.href.slice(1)
-                  ? 'text-accent bg-accent-muted'
-                  : 'text-grey-200 hover:text-accent hover:bg-grey-800/50'
+                  ? 'bg-sky-400/15 text-sky-300'
+                  : 'text-slate-300 hover:bg-slate-800 hover:text-sky-200'
               }`}
             >
+              <link.icon size={16} />
               {link.label}
             </a>
           ))}
         </div>
       </div>
-    </nav>
+    </>
   );
 }

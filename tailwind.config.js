@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        'portfolio-sky': '#8fc4f5',
         grey: {
           950: '#0a0b0f',
           900: '#0f1117',

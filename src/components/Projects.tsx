@@ -1,115 +1,95 @@
-import { ExternalLink, Github, Check, Code2, ShieldCheck, CreditCard, Database } from 'lucide-react';
+import { CheckCircle2, ExternalLink, Github } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { projects } from '../data/portfolio';
+import { projectPlaceholders, projects } from '../data/portfolio';
 
 export default function Projects() {
   const sectionRef = useScrollReveal();
-  const project = projects[0];
-
-  if (!project) return null;
-
-  // Custom icons mapping for each key feature of the project
-  const featureIcons = [
-    <Code2 className="w-4 h-4 text-accent" />,
-    <ShieldCheck className="w-4 h-4 text-accent" />,
-    <CreditCard className="w-4 h-4 text-accent" />,
-    <Database className="w-4 h-4 text-accent" />
-  ];
+  const visibleProjects = [...projects, ...projectPlaceholders].slice(0, 6);
 
   return (
-    <section id="projects" className="section-padding bg-grey-850 relative overflow-hidden" ref={sectionRef}>
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/3 rounded-full blur-[130px] pointer-events-none" />
+    <section id="projects" className="portfolio-panel" ref={sectionRef}>
+      <div className="panel-content">
+        <div className="mb-9 text-center">
+          <h2 className="panel-title reveal">
+            <span>My</span> Portfolio
+          </h2>
+        </div>
 
-      <div className="section-container relative z-10">
-        <h2 className="section-heading reveal accent-underline font-black tracking-tight text-center">Personal Project</h2>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {visibleProjects.map((project, index) => {
+            const isPlaceholder = project.githubUrl === '#';
 
-        <div className="reveal mt-12 max-w-4xl mx-auto">
-          {/* Unified 1-Column Featured Card */}
-          <div className="bg-grey-800/40 backdrop-blur-md rounded-2xl border border-grey-700/50 p-8 md:p-10 hover:border-accent/20 hover:shadow-3xl hover:shadow-accent/5 transition-all duration-500">
-            
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-grey-800/80 mb-6">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-accent bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
-                  Full-Stack System
-                </span>
-                <h3 className="text-2xl md:text-3xl font-black text-grey-50 tracking-tight mt-2.5">
-                  {project.title}
-                </h3>
-              </div>
-              
-              <div className="flex items-center gap-1.5 self-start md:self-center font-mono text-xs text-grey-400 bg-grey-900/60 border border-grey-800 px-3.5 py-1.5 rounded-xl">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span>github.com/codewithdtd/sports</span>
-              </div>
-            </div>
-
-            {/* Description */}
-            <p className="text-grey-300 text-sm md:text-base leading-relaxed mb-8">
-              {project.description}
-            </p>
-
-            {/* Key Features in 2-Column Grid */}
-            <div className="mb-8">
-              <h4 className="text-[10px] font-bold uppercase tracking-wider text-grey-500 mb-4">Core System Implementations</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {project.features.map((feature, idx) => (
-                  <div 
-                    key={idx} 
-                    className="group/item flex items-start gap-3.5 p-4 rounded-xl bg-grey-900/30 border border-grey-800/50 hover:border-accent/15 transition-all duration-300"
-                  >
-                    <div className="mt-0.5 flex-shrink-0 bg-accent/5 p-2 rounded-lg border border-accent/15 group-hover/item:border-accent/30 transition-colors duration-300">
-                      {featureIcons[idx] || <Check className="w-4 h-4 text-accent" />}
-                    </div>
-                    <p className="text-xs sm:text-sm text-grey-300 leading-relaxed group-hover/item:text-grey-100 transition-colors duration-200">
-                      {feature}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Tech Stack */}
-            <div className="mb-8 pt-6 border-t border-grey-800/80">
-              <h4 className="text-[10px] font-bold uppercase tracking-wider text-grey-500 mb-3">Technologies Stack</h4>
-              <div className="flex flex-wrap gap-2">
-                {project.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2.5 py-1.5 text-[11px] font-semibold text-accent border border-accent/10 rounded-lg bg-accent/5 hover:border-accent/30 hover:bg-accent/10 transition-colors duration-300 cursor-default"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Footer / Link Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-6 border-t border-grey-800/80">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-grey-900 border border-grey-800 text-grey-200 text-sm font-semibold rounded-xl hover:border-accent hover:text-accent transition-all duration-300"
+            return (
+              <article
+                key={`${project.title}-${index}`}
+                className="reveal overflow-hidden rounded-lg border border-sky-300/10 bg-slate-800/70 shadow-[0_12px_30px_rgba(2,8,23,0.18)] transition hover:-translate-y-1 hover:border-cyan-300/40"
               >
-                <Github size={16} />
-                View Source Code
-              </a>
-              {project.liveUrl && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-grey-400 hover:text-accent transition-colors duration-300"
-                >
-                  <ExternalLink size={16} />
-                  Live Demo
-                </a>
-              )}
-            </div>
+                <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-slate-950">
+                  <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(14,165,233,0.22),transparent_45%,rgba(34,211,238,0.14))]" />
+                  <div className="relative z-10 w-full px-5">
+                    <p className="mb-2 text-[11px] font-black uppercase text-white">{project.status || 'Build Complete'}</p>
+                    <p className="max-w-[12rem] text-sm font-black leading-5 text-slate-100">{project.title}</p>
+                  </div>
+                </div>
 
-          </div>
+                <div className="p-5">
+                  <h3 className="mb-2 text-base font-black leading-6 text-white">{project.title}</h3>
+                  <p className="mb-4 min-h-12 text-sm leading-6 text-slate-400">{project.description}</p>
+
+                  <div className="mb-5">
+                    <p className="mb-3 text-[10px] font-black uppercase tracking-[0.16em] text-cyan-300">Key features</p>
+                    {project.features.length > 0 ? (
+                      <ul className="space-y-2">
+                        {project.features.slice(0, 4).map((feature) => (
+                          <li key={feature} className="flex items-start gap-2 text-xs leading-5 text-slate-300">
+                            <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-cyan-300" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="rounded-lg border border-cyan-300/10 bg-cyan-300/5 px-3 py-2 text-xs leading-5 text-slate-400">
+                        Feature details needed.
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="mb-5 flex flex-wrap gap-2">
+                    {project.techStack.slice().map((tech) => (
+                      <span key={tech} className="rounded-full bg-cyan-400/10 px-2.5 py-1 text-[10px] font-bold text-cyan-300">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    {!isPlaceholder && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-300 transition hover:text-cyan-300"
+                      >
+                        <Github size={14} />
+                        Source
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-300 transition hover:text-cyan-300"
+                      >
+                        <ExternalLink size={14} />
+                        Demo
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

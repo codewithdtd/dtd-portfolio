@@ -6,7 +6,7 @@ export const personalInfo = {
   location: 'Ho Chi Minh City, Vietnam',
   availability: 'Open to opportunities',
   yearsExperience: '1.5',
-  bio: `I'm a Fullstack Developer dedicated to turning complex ideas into high-performance web applications. 
+  bio: `Fullstack Developer dedicated to turning complex ideas into high-performance web applications. 
   My core expertise spans modern tech stacks (React, Vue, Node.js, Laravel) and database management (MySQL, MongoDB). I take ownership of larger functional areas, from designing secure API structures to deploying scalable setups on AWS and automating CI/CD workflows.  Driven by a growth mindset and a proactive attitude, I look forward to contributing to global, innovative engineering teams and creating meaningful digital solutions.`,
   social: {
     linkedin: 'https://linkedin.com/in/dothanhdat02',
@@ -21,7 +21,7 @@ export interface SkillCategory {
 export const skills: SkillCategory[] = [
   {
     category: 'Programming Languages',
-    skills: ['JavaScript', 'TypeScript', 'PHP'],
+    skills: ['JavaScript', 'TypeScript', 'PHP', 'Python'],
   },
   {
     category: 'Frameworks & Technologies',
@@ -49,6 +49,7 @@ export interface Project {
   liveUrl?: string;
   githubUrl: string;
   featured: boolean;
+  status?: string;
 }
 
 export const projects: Project[] = [
@@ -64,7 +65,52 @@ export const projects: Project[] = [
     techStack: ['NodeJS (ExpressJS)', 'ReactJS', 'Redux', 'Tailwind CSS', 'Figma', 'MUI chart', 'EmailJS', 'Axios', 'JWT', 'MongoDB'],
     githubUrl: 'https://github.com/codewithdtd/sports',
     featured: true,
+    status: '[Personal Project]',
   },
+];
+
+export const projectPlaceholders: Project[] = [
+  {
+    title: 'EdTech Audio Processing & Analytics Web Application',
+    description: 'Developed a scalable web platform featuring audio capture and automated analytical processing pipelines for educational assessments.',
+    features: [
+      'Implemented chunk-based audio streaming with fault-tolerant retry mechanisms to handle network interruptions gracefully',
+      'Engineered backend processing modules for asynchronous audio segment merging and stream handling',
+      'Integrated third-party AI processing pipelines to transcribe and extract structured insights from audio data',
+      'Built interactive data visualization dashboards using charts to display processed analytical metrics'
+    ],
+    techStack: ['Laravel', 'React', 'TypeScript', 'PostgreSQL', 'Supabase', 'AI APIs'],
+    githubUrl: '#',
+    featured: false,
+    status: ' ',
+  },
+  {
+    title: 'Cloud Document Automation & Integration Tool',
+    description: 'Developed a productivity application featuring automated document generation (Mail Merge) seamlessly integrated with cloud storage services via Microsoft Graph API.',
+    features: [
+      'Engineered an automated document processing and Mail Merge pipeline using Python and FastAPI',
+      'Integrated Microsoft Graph API to handle full CRUD operations (View, Edit, Delete) for cloud-stored documents',
+      'Designed and implemented responsive user interfaces for document management and workflow tracking'
+    ],
+    techStack: ['React', 'TypeScript', 'Python', 'FastAPI', 'Microsoft Graph API', 'Docker'],
+    githubUrl: '#',
+    featured: false,
+    status: ' ',
+  },
+{
+    title: 'Mobile App CMS & Backend Infrastructure',
+    description: 'Designed and developed a robust backend architecture and Content Management System (CMS) to power mobile application features and administrative workflows.',
+    features: [
+      'Integrated third-party APIs (YouTube, Vimeo, Eventbrite, Brevo) to power core mobile app features',
+      'Implemented rate-limiting and CAPTCHA mechanisms to secure the CMS against abuse',
+      'Engineered data processing pipelines using MongoDB and scheduled automated tasks via cron jobs',
+      'Configured load balancing and cloud storage integration using AWS S3 and MinIO'
+    ],
+    techStack: ['Vue.js', 'Node.js', 'MongoDB', 'AWS S3', 'MinIO', 'Feather.js'],
+    githubUrl: '#',
+    featured: false,
+    status: ' ',
+  }
 ];
 
 export interface Experience {

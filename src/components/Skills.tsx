@@ -1,8 +1,8 @@
+import { Code2, Database, Layers, type LucideIcon, Wrench } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { skills } from '../data/portfolio';
-import { Code2, Layers, Database, Wrench } from 'lucide-react';
 
-const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+const categoryIcons: Record<string, LucideIcon> = {
   'Programming Languages': Code2,
   'Frameworks & Technologies': Layers,
   'Databases & Cloud': Database,
@@ -13,43 +13,69 @@ export default function Skills() {
   const sectionRef = useScrollReveal();
 
   return (
-    <section id="skills" className="section-padding bg-grey-900" ref={sectionRef}>
-      <div className="section-container">
-        <h2 className="section-heading reveal accent-underline">Skills & Technologies</h2>
-        <p className="section-subheading reveal">Tools and technologies I use to build scalable web applications</p>
+    <section id="skills" className="portfolio-panel" ref={sectionRef}>
+      <div className="panel-content grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <div className="reveal hidden min-h-80 items-center justify-center lg:flex">
+          <div className="relative h-72 w-72">
+            <div className="absolute left-1/2 top-1/2 h-28 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/20 bg-slate-800/70 shadow-[0_0_60px_rgba(14,165,233,0.28)]" />
+            {skills.slice(0, 4).map((group, index) => {
+              const IconComponent = categoryIcons[group.category] || Code2;
+              const positions = ['left-16 top-4', 'right-10 top-14', 'left-4 top-28', 'right-20 bottom-6'];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {skills.map((group) => {
-            const IconComponent = categoryIcons[group.category] || Code2;
+              return (
+                <div
+                  key={group.category}
+                  className={`absolute ${positions[index]} flex h-16 w-16 items-center justify-center rounded-full border border-sky-300/15 bg-slate-800 text-cyan-300 shadow-[0_0_22px_rgba(56,189,248,0.38)]`}
+                >
+                  <IconComponent size={28} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
 
-            return (
-              <div 
-                key={group.category} 
-                className="group/card card reveal flex flex-col justify-between bg-grey-800/40 backdrop-blur-md border border-grey-700/50 rounded-2xl p-6 sm:p-8 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-300"
-              >
-                <div>
-                  <div className="flex items-center gap-3.5 mb-6">
-                    <div className="p-3 rounded-xl bg-accent/5 border border-accent/15 text-accent group-hover/card:bg-accent/10 group-hover/card:border-accent/35 transition-all duration-300">
-                      <IconComponent className="w-6 h-6" />
+        <div>
+          <h2 className="panel-title reveal mb-4">
+            <span>My</span> Skills
+          </h2>
+          <p className="reveal mb-8 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
+            I build responsive full-stack applications with React, Vue, Node.js, Laravel, and production-oriented database and cloud workflows.
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {skills.map((group) => {
+              const IconComponent = categoryIcons[group.category] || Code2;
+
+              return (
+                <article
+                  key={group.category}
+                  className="reveal rounded-lg border border-sky-300/10 bg-slate-800/70 p-5 shadow-[0_12px_30px_rgba(2,8,23,0.18)] transition hover:border-cyan-300/35"
+                >
+                  <div className="mb-5 flex items-center gap-3">
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-cyan-300/20 bg-slate-900/70 text-cyan-300 shadow-[0_0_18px_rgba(56,189,248,0.3)]">
+                      <IconComponent size={21} />
                     </div>
-                    <h3 className="text-xl font-bold text-grey-50 tracking-tight">{group.category}</h3>
+                    <h3 className="text-base font-black leading-5 text-white">{group.category}</h3>
                   </div>
-                  
-                  <div className="flex flex-wrap gap-2.5">
+
+                  <div className="flex flex-wrap gap-2">
                     {group.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="group/badge px-4 py-2 rounded-xl bg-grey-900/50 border border-grey-800/80 text-sm font-medium text-grey-300 hover:border-accent hover:text-accent hover:bg-accent/5 hover:shadow-[0_0_12px_rgba(34,197,94,0.1)] transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2 cursor-default"
+                        className="rounded-full border border-sky-300/10 bg-slate-900/70 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-300/40 hover:text-cyan-200"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent/30 group-hover/badge:bg-accent group-hover/badge:scale-110 transition-all duration-300" />
                         {skill}
                       </span>
                     ))}
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="reveal mt-6 rounded-lg border border-cyan-300/10 bg-cyan-300/5 p-4 text-sm leading-6 text-slate-300">
+            <span className="font-bold text-cyan-300">Content needed:</span> add soft skills, languages, certifications, or skill priorities if you want this section to be more complete.
+          </div>
         </div>
       </div>
     </section>
