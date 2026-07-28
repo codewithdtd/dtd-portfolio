@@ -1,13 +1,14 @@
 export const personalInfo = {
   name: 'Do Thanh Dat',
-  title: 'Full Stack Developer',
+  title: 'Fullstack Developer',
   tagline: 'Whatever the mind can conceive and believe, it can achieve - Napoleon Hill',
   email: 'dtdat201202@gmail.com',
   location: 'Ho Chi Minh City, Vietnam',
   availability: 'Open to opportunities',
-  yearsExperience: '1.5',
+  yearsExperience: '2+',
   bio: `Fullstack Developer dedicated to turning complex ideas into high-performance web applications. 
   My core expertise spans modern tech stacks (React, Vue, Node.js, Laravel) and database management (MySQL, MongoDB). I take ownership of larger functional areas, from designing secure API structures to deploying scalable setups on AWS and automating CI/CD workflows.  Driven by a growth mindset and a proactive attitude, I look forward to contributing to global, innovative engineering teams and creating meaningful digital solutions.`,
+  heroBio: 'I build responsive full-stack web apps with React, Vue, Node.js, Laravel, and cloud-ready database workflows.',
   social: {
     linkedin: 'https://linkedin.com/in/dothanhdat02',
   },

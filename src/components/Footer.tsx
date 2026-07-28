@@ -3,8 +3,8 @@ import { personalInfo } from '../data/portfolio';
 
 export default function Footer() {
   return (
-    <footer id="contact" className="portfolio-panel min-h-fit">
-      <div className="panel-content">
+    <footer id="contact" className="relative overflow-hidden bg-[#111827]">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-12 md:pl-28 md:pr-10 lg:pl-32 lg:pr-12">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="panel-title">
