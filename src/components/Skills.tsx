@@ -49,7 +49,7 @@ export default function Skills() {
               return (
                 <article
                   key={group.category}
-                  className="reveal rounded-lg border border-sky-300/10 bg-slate-800/70 p-5 shadow-[0_12px_30px_rgba(2,8,23,0.18)] transition hover:border-cyan-300/35"
+                  className="interactive-card reveal rounded-lg border border-sky-300/10 bg-slate-800/70 p-5 shadow-[0_12px_30px_rgba(2,8,23,0.18)] hover:border-cyan-300/35"
                 >
                   <div className="mb-5 flex items-center gap-3">
                     <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-cyan-300/20 bg-slate-900/70 text-cyan-300 shadow-[0_0_18px_rgba(56,189,248,0.3)]">
@@ -71,10 +71,6 @@ export default function Skills() {
                 </article>
               );
             })}
-          </div>
-
-          <div className="reveal mt-6 rounded-lg border border-cyan-300/10 bg-cyan-300/5 p-4 text-sm leading-6 text-slate-300">
-            <span className="font-bold text-cyan-300">Content needed:</span> add soft skills, languages, certifications, or skill priorities if you want this section to be more complete.
           </div>
         </div>
       </div>

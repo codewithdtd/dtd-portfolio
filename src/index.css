@@ -86,6 +86,7 @@
     background:
       linear-gradient(90deg, rgba(0, 194, 255, 0.09), transparent 18%, transparent 78%, rgba(0, 194, 255, 0.12)),
       linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 42%);
+    animation: panelSweep 10s ease-in-out infinite alternate;
   }
 
   .panel-content {
@@ -102,6 +103,7 @@
 
   .nav-rail {
     @apply fixed left-5 top-1/2 z-50 hidden -translate-y-1/2 flex-col items-center gap-4 rounded-full border border-sky-300/15 bg-slate-800/70 px-3 py-5 text-slate-400 shadow-[0_0_26px_rgba(0,178,255,0.45)] backdrop-blur-md md:flex;
+    animation: navGlow 4s ease-in-out infinite;
   }
 
   .nav-icon {
@@ -114,12 +116,128 @@
 
   .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(34px) scale(0.98);
+    transition: opacity 0.75s ease-out, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .reveal.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+  }
+
+  .reveal.visible:nth-child(2) {
+    transition-delay: 90ms;
+  }
+
+  .reveal.visible:nth-child(3) {
+    transition-delay: 160ms;
+  }
+
+  .reveal.visible:nth-child(4) {
+    transition-delay: 230ms;
+  }
+
+  .hero-copy {
+    animation: heroCopyIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-visual {
+    animation: heroVisualIn 1s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-float {
+    animation: floatSoft 5.5s ease-in-out infinite;
+  }
+
+  .hero-line {
+    animation: lineDrift 3.5s ease-in-out infinite alternate;
+  }
+
+  .ambient-dot {
+    animation: floatSoft 4.5s ease-in-out infinite;
+  }
+
+  .interactive-card {
+    @apply transition duration-300 ease-out;
+  }
+
+  .interactive-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 42px rgba(2, 8, 23, 0.26), 0 0 24px rgba(34, 211, 238, 0.12);
+  }
+}
+
+@layer utilities {
+  @keyframes heroCopyIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-42px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes heroVisualIn {
+    0% {
+      opacity: 0;
+      transform: translateX(46px) scale(0.96);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  @keyframes floatSoft {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes lineDrift {
+    0% {
+      opacity: 0.35;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0.85;
+      transform: translateX(-12px);
+    }
+  }
+
+  @keyframes navGlow {
+    0%, 100% {
+      box-shadow: 0 0 24px rgba(0, 178, 255, 0.36);
+    }
+    50% {
+      box-shadow: 0 0 34px rgba(0, 178, 255, 0.62);
+    }
+  }
+
+  @keyframes panelSweep {
+    0% {
+      opacity: 0.72;
+      transform: translateX(-1.5%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(1.5%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

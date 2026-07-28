@@ -16,7 +16,7 @@ export default function Experience() {
 
         <div className="space-y-5">
           {experiences.map((exp, index) => (
-            <article key={`${exp.company}-${index}`} className="reveal rounded-lg border border-sky-300/10 bg-slate-800/70 p-5 sm:p-6">
+            <article key={`${exp.company}-${index}`} className="interactive-card reveal rounded-lg border border-sky-300/10 bg-slate-800/70 p-5 sm:p-6">
               <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <h3 className="text-xl font-black text-white">{exp.role}</h3>

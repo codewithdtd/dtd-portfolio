@@ -26,7 +26,7 @@ export const skills: SkillCategory[] = [
   },
   {
     category: 'Frameworks & Technologies',
-    skills: ['Vue.js', 'React.js', 'Node.js (Express.js, FeatherJS)', 'Laravel', 'Bootstrap', 'Socket.IO', 'Redux', 'Pinia'],
+    skills: ['Vue.js', 'React.js', 'Node.js (Express.js, FeatherJS)', 'FastAPI', 'Laravel', 'Bootstrap', 'Socket.IO', 'Redux', 'Pinia'],
   },
   {
     category: 'Databases & Cloud',
@@ -135,7 +135,7 @@ export const experiences: Experience[] = [
       'Integrated Microsoft Graph API to automate OneDrive file management and built dynamic reporting modules (Excel/PDF), reducing manual data export time.',
       'Configured automated CI/CD workflows via GitHub Actions and strengthened system defense by implementing Rate Limiting, CAPTCHA, and resolving server header leakages.',
     ],
-    techStack: ['ReactJS', 'VueJS', 'Node.js (FeatherJS)', 'PHP', 'Laravel', 'MySQL', 'MongoDB', 'AWS S3/EC2', 'Supabase', 'Lovable'],
+    techStack: ['ReactJS', 'VueJS', 'Node.js (FeatherJS)', 'Python', 'FastAPI', 'PHP', 'Laravel', 'MySQL', 'MongoDB', 'AWS S3/EC2', 'Supabase', 'Lovable'],
   },
   {
     role: 'Full Stack Developer',

@@ -4,7 +4,7 @@ import { projectPlaceholders, projects } from '../data/portfolio';
 
 export default function Projects() {
   const sectionRef = useScrollReveal();
-  const visibleProjects = [...projects, ...projectPlaceholders].slice(0, 6);
+  const visibleProjects = [...projects, ...projectPlaceholders];
 
   return (
     <section id="projects" className="portfolio-panel" ref={sectionRef}>
@@ -15,29 +15,28 @@ export default function Projects() {
           </h2>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2">
           {visibleProjects.map((project, index) => {
             const isPlaceholder = project.githubUrl === '#';
 
             return (
               <article
                 key={`${project.title}-${index}`}
-                className="reveal overflow-hidden rounded-lg border border-sky-300/10 bg-slate-800/70 shadow-[0_12px_30px_rgba(2,8,23,0.18)] transition hover:-translate-y-1 hover:border-cyan-300/40"
+                className="interactive-card reveal overflow-hidden rounded-lg border border-sky-300/10 bg-slate-800/70 shadow-[0_12px_30px_rgba(2,8,23,0.18)] hover:border-cyan-300/40"
               >
-                <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden bg-slate-950">
+                <div className="relative flex aspect-[16/7] items-center justify-center overflow-hidden bg-slate-950">
                   <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(14,165,233,0.22),transparent_45%,rgba(34,211,238,0.14))]" />
                   <div className="relative z-10 w-full px-5">
                     <p className="mb-2 text-[11px] font-black uppercase text-white">{project.status || 'Build Complete'}</p>
-                    <p className="max-w-[12rem] text-sm font-black leading-5 text-slate-100">{project.title}</p>
+                    <p className="max-w-[25rem] text-sm font-black leading-5 text-slate-100">{project.title}</p>
                   </div>
                 </div>
 
                 <div className="p-5">
-                  <h3 className="mb-2 text-base font-black leading-6 text-white">{project.title}</h3>
                   <p className="mb-4 min-h-12 text-sm leading-6 text-slate-400">{project.description}</p>
 
                   <div className="mb-5">
-                    <p className="mb-3 text-[10px] font-black uppercase tracking-[0.16em] text-cyan-300">Key features</p>
+                    <p className="mb-3 text-[10px] font-black uppercase tracking-[0.16em] text-cyan-300">My contributions</p>
                     {project.features.length > 0 ? (
                       <ul className="space-y-2">
                         {project.features.slice(0, 4).map((feature) => (
@@ -49,7 +48,7 @@ export default function Projects() {
                       </ul>
                     ) : (
                       <p className="rounded-lg border border-cyan-300/10 bg-cyan-300/5 px-3 py-2 text-xs leading-5 text-slate-400">
-                        Feature details needed.
+                        Contribution details needed.
                       </p>
                     )}
                   </div>

@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section id="home" className="portfolio-panel">
       <div className="panel-content grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
-        <div className="order-2 mx-auto max-w-2xl text-center lg:order-1 lg:mx-0 lg:text-left">
+        <div className="hero-copy order-2 mx-auto max-w-2xl text-center lg:order-1 lg:mx-0 lg:text-left">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.24em] text-sky-300">
             {personalInfo.availability}
           </p>
@@ -53,19 +53,19 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
-          <div className="relative h-[22rem] w-full max-w-sm sm:h-[28rem] sm:max-w-md lg:h-[34rem] lg:max-w-lg">
+        <div className="hero-visual order-1 flex justify-center lg:order-2 lg:justify-end">
+          <div className="hero-float relative h-[22rem] w-full max-w-sm sm:h-[28rem] sm:max-w-md lg:h-[34rem] lg:max-w-lg">
             <div className="absolute inset-x-10 top-8 h-72 rounded-full border border-sky-300/15 shadow-[0_0_70px_rgba(56,189,248,0.18)] sm:h-96" />
             <div className="absolute right-0 top-8 hidden h-72 w-72 rounded-full border border-cyan-300/15 sm:block" />
-            <div className="absolute left-10 top-10 h-4 w-4 rounded-full bg-cyan-300/25 shadow-[0_0_18px_rgba(34,211,238,0.6)]" />
-            <div className="absolute right-8 top-24 h-6 w-6 rounded-full border border-cyan-300/30 bg-slate-900/50 shadow-[0_0_22px_rgba(34,211,238,0.35)]" />
-            <div className="absolute bottom-20 left-5 h-7 w-7 rounded-full border border-sky-300/25 bg-slate-900/60 shadow-[0_0_24px_rgba(56,189,248,0.4)]" />
+            <div className="ambient-dot absolute left-10 top-10 h-4 w-4 rounded-full bg-cyan-300/25 shadow-[0_0_18px_rgba(34,211,238,0.6)]" />
+            <div className="ambient-dot absolute right-8 top-24 h-6 w-6 rounded-full border border-cyan-300/30 bg-slate-900/50 shadow-[0_0_22px_rgba(34,211,238,0.35)] [animation-delay:0.7s]" />
+            <div className="ambient-dot absolute bottom-20 left-5 h-7 w-7 rounded-full border border-sky-300/25 bg-slate-900/60 shadow-[0_0_24px_rgba(56,189,248,0.4)] [animation-delay:1.2s]" />
 
             <div className="absolute right-6 top-10 hidden w-72 space-y-3 sm:block">
               {Array.from({ length: 12 }).map((_, index) => (
                 <div
                   key={index}
-                  className="ml-auto h-px rounded-full bg-gradient-to-r from-transparent via-sky-300/30 to-transparent"
+                  className="hero-line ml-auto h-px rounded-full bg-gradient-to-r from-transparent via-sky-300/30 to-transparent"
                   style={{ width: `${72 + index * 8}px` }}
                 />
               ))}
