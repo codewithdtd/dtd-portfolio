@@ -55,6 +55,21 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'English SRS & Mastery Learning Platform',
+    description: 'A full-stack language learning application combining Spaced Repetition System (SRS) scheduling, interactive flashcard study sessions, and Excel-based vocabulary management.',
+    features: [
+      'Architected end-to-end full-stack solution using Next.js (App Router, Tailwind CSS) and FastAPI (Python), supported by SQLAlchemy and PostgreSQL/SQLite.',
+      'Designed an automated Excel workbook parser using openpyxl with validation pipelines for seamless vocabulary and sheet importing.',
+      'Engineered an intelligent Spaced Repetition System (SRS) and multi-round mastery review queue with real-time study tracking and weak-card analytics.',
+      'Built interactive daily study dashboards with check-in calendars, streak tracking, notification triggers, and desktop alert mechanisms.'
+    ],
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'FastAPI', 'Python', 'SQLAlchemy', 'PostgreSQL', 'SQLite', 'openpyxl'],
+    githubUrl: 'https://github.com/codewithdtd/learn-fast',
+    liveUrl: 'https://dflow-six.vercel.app/',
+    featured: true,
+    status: '[Personal Project]',
+  },
+  {
     title: 'Full-Stack Sports Field Management System',
     description: 'A robust management system handling field bookings, customer portals, role-based controls, and payment integrations.',
     features: [
