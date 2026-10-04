@@ -23,11 +23,11 @@ export default function Skills() {
         <div className="reveal hidden min-h-[22rem] items-center justify-center lg:flex">
           <div className="relative flex h-80 w-80 items-center justify-center">
             {/* Concentric subtle radar rings */}
-            <div className="absolute h-72 w-72 rounded-full border border-sky-400/15" />
-            <div className="absolute h-52 w-52 rounded-full border border-cyan-400/20 bg-slate-900/30 backdrop-blur-sm shadow-[0_0_50px_rgba(14,165,233,0.15)]" />
+            <div className="skill-radar-ring absolute h-72 w-72 rounded-full border border-sky-400/15" />
+            <div className="skill-radar-ring-inner absolute h-52 w-52 rounded-full border border-cyan-400/20 bg-slate-900/30 backdrop-blur-sm shadow-[0_0_50px_rgba(14,165,233,0.15)]" />
             
             {/* Center Core Hub */}
-            <div className="relative z-10 flex h-24 w-24 flex-col items-center justify-center rounded-2xl border border-sky-400/30 bg-gradient-to-br from-slate-800/80 to-slate-950/90 shadow-[0_0_30px_rgba(56,189,248,0.35)] backdrop-blur-md">
+            <div className="skill-radar-core relative z-10 flex h-24 w-24 flex-col items-center justify-center rounded-2xl border border-sky-400/30 bg-gradient-to-br from-slate-800/80 to-slate-950/90 shadow-[0_0_30px_rgba(56,189,248,0.35)] backdrop-blur-md">
               <Terminal size={28} className="text-cyan-300" />
               <span className="mt-1 text-[11px] font-bold tracking-widest uppercase text-sky-200">Dev Stack</span>
             </div>

@@ -46,7 +46,7 @@ export default function Experience() {
                   </div>
                 </div>
 
-                <div className="flex w-fit items-center gap-2 rounded-full border border-sky-400/25 bg-sky-950/40 px-3.5 py-1.5 text-xs font-semibold text-sky-200 backdrop-blur-md shadow-sm">
+                <div className="experience-period flex w-fit items-center gap-2 rounded-full border border-sky-400/25 bg-sky-950/40 px-3.5 py-1.5 text-xs font-semibold text-sky-200 backdrop-blur-md shadow-sm">
                   <Calendar size={13} className="text-cyan-400" />
                   <span>{exp.period}</span>
                 </div>
