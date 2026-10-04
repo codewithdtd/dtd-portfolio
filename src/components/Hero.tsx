@@ -121,7 +121,7 @@ export default function Hero() {
           aria-label="Scroll down"
         >
           <span className="text-[11px] font-semibold uppercase tracking-widest text-slate-500 group-hover:text-sky-300">Scroll</span>
-          <div className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 bg-slate-900/80 backdrop-blur-md transition-all group-hover:border-sky-400/40 group-hover:bg-sky-950/50 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+          <div className="hero-scroll-disc flex h-9 w-9 items-center justify-center rounded-full border border-slate-800 bg-slate-900/80 backdrop-blur-md transition-all group-hover:border-sky-400/40 group-hover:bg-sky-950/50 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.3)]">
             <ArrowDown size={16} className="animate-bounce" />
           </div>
         </button>
