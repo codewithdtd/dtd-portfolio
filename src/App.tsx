@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     const savedTheme = window.localStorage.getItem('portfolio-theme');
-    return savedTheme === 'dark' ? 'dark' : 'light';
+    return savedTheme === 'light' ? 'light' : 'dark';
   });
 
   const toggleTheme = () => {

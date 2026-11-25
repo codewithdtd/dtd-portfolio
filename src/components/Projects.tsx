@@ -1,10 +1,9 @@
 import { CheckCircle2, ExternalLink, Github, Sparkles, Layers } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { projectPlaceholders, projects } from '../data/portfolio';
+import { projects } from '../data/portfolio';
 
 export default function Projects() {
   const sectionRef = useScrollReveal();
-  const visibleProjects = [...projects, ...projectPlaceholders];
 
   return (
     <section id="projects" className="portfolio-panel relative overflow-hidden" ref={sectionRef}>
@@ -23,13 +22,13 @@ export default function Projects() {
             <span>Featured</span> Projects & Portfolio
           </h2>
           <p className="reveal mt-3 text-sm text-slate-400 max-w-xl mx-auto sm:text-base">
-            Showcase of full-stack engineering, production-grade applications, and thoughtful interface architecture.
+            Showcase of independent full-stack engineering, production-grade applications, and interactive architectures.
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {visibleProjects.map((project, index) => {
-            const isPlaceholder = project.githubUrl === '#';
+          {projects.map((project, index) => {
+            const hasValidGithub = project.githubUrl && project.githubUrl !== '#';
 
             return (
               <article
@@ -43,7 +42,7 @@ export default function Projects() {
                   <div className="relative z-10">
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-400/30 bg-sky-950/60 px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-cyan-300 backdrop-blur-md">
                       <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
-                      {project.status || 'Active Build'}
+                      {project.status || 'Personal Project'}
                     </span>
                     <h3 className="mt-2 text-lg font-extrabold text-white sm:text-xl tracking-tight">
                       {project.title}
@@ -82,7 +81,7 @@ export default function Projects() {
 
                   {/* Tech stack pills */}
                   <div className="mb-6 flex flex-wrap gap-2 border-t border-slate-700/40 pt-4">
-                    {project.techStack.slice().map((tech) => (
+                    {project.techStack.map((tech) => (
                       <span
                         key={tech}
                         className="rounded-md border border-slate-700/50 bg-slate-950/60 px-2.5 py-1 text-[11px] font-medium text-slate-300 transition-colors group-hover:border-sky-400/30"
@@ -94,7 +93,7 @@ export default function Projects() {
 
                   {/* Action Links */}
                   <div className="flex items-center gap-3 pt-1">
-                    {!isPlaceholder && (
+                    {hasValidGithub && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
