@@ -67,7 +67,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/codewithdtd/learn-fast',
     liveUrl: 'https://dflow-six.vercel.app/',
     featured: true,
-    status: '[Personal Project]',
+    status: 'Personal Project',
   },
   {
     title: 'Full-Stack Sports Field Management System',
@@ -81,59 +81,28 @@ export const projects: Project[] = [
     techStack: ['NodeJS (ExpressJS)', 'ReactJS', 'Redux', 'Tailwind CSS', 'Figma', 'MUI chart', 'EmailJS', 'Axios', 'JWT', 'MongoDB'],
     githubUrl: 'https://github.com/codewithdtd/sports',
     featured: true,
-    status: '[Personal Project]',
+    status: 'Personal Project',
   },
 ];
 
-export const projectPlaceholders: Project[] = [
-  {
-    title: 'EdTech Audio Processing & Analytics Web Application',
-    description: 'Developed a scalable web platform featuring audio capture and automated analytical processing pipelines for educational assessments.',
-    features: [
-      'Implemented chunk-based audio streaming with fault-tolerant retry mechanisms to handle network interruptions gracefully',
-      'Engineered backend processing modules for asynchronous audio segment merging and stream handling',
-      'Integrated third-party AI processing pipelines to transcribe and extract structured insights from audio data',
-      'Built interactive data visualization dashboards using charts to display processed analytical metrics'
-    ],
-    techStack: ['Laravel', 'React', 'TypeScript', 'PostgreSQL', 'Supabase', 'AI APIs'],
-    githubUrl: '#',
-    featured: false,
-    status: ' ',
-  },
-  {
-    title: 'Cloud Document Automation & Integration Tool',
-    description: 'Developed a productivity application featuring automated document generation (Mail Merge) seamlessly integrated with cloud storage services via Microsoft Graph API.',
-    features: [
-      'Engineered an automated document processing and Mail Merge pipeline using Python and FastAPI',
-      'Integrated Microsoft Graph API to handle full CRUD operations (View, Edit, Delete) for cloud-stored documents',
-      'Designed and implemented responsive user interfaces for document management and workflow tracking'
-    ],
-    techStack: ['React', 'TypeScript', 'Python', 'FastAPI', 'Microsoft Graph API', 'Docker'],
-    githubUrl: '#',
-    featured: false,
-    status: ' ',
-  },
-{
-    title: 'Mobile App CMS & Backend Infrastructure',
-    description: 'Designed and developed a robust backend architecture and Content Management System (CMS) to power mobile application features and administrative workflows.',
-    features: [
-      'Integrated third-party APIs (YouTube, Vimeo, Eventbrite, Brevo) to power core mobile app features',
-      'Implemented rate-limiting and CAPTCHA mechanisms to secure the CMS against abuse',
-      'Engineered data processing pipelines using MongoDB and scheduled automated tasks via cron jobs',
-      'Configured load balancing and cloud storage integration using AWS S3 and MinIO'
-    ],
-    techStack: ['Vue.js', 'Node.js', 'MongoDB', 'AWS S3', 'MinIO', 'Feather.js'],
-    githubUrl: '#',
-    featured: false,
-    status: ' ',
-  }
-];
+export const projectPlaceholders: Project[] = [];
+
+export interface SubProject {
+  title: string;
+  category?: string;
+  description: string;
+  features: string[];
+  techStack: string[];
+}
 
 export interface Experience {
   role: string;
   company: string;
   period: string;
-  achievements: string[];
+  location?: string;
+  summary?: string;
+  subProjects?: SubProject[];
+  achievements?: string[];
   techStack?: string[];
 }
 
@@ -142,28 +111,52 @@ export const experiences: Experience[] = [
     role: 'Full Stack Developer',
     company: 'OTG Lab Vietnam',
     period: 'Oct 2025 - Present',
-    achievements: [
-      'Resolved critical MongoDB replica set synchronization failures (nodes stuck in recovering state), restoring system availability and ensuring data consistency.',
-      'Increased UI delivery speed by 30% via AI-driven tools (Lovable/Supabase), and developed a document-to-image conversion module (PDF/DOCX/TXT) for rapid file previews.',
-      'Designed a live-audio recording pipeline (client-side chunking/async server processing) for up to 3-hour sessions, and utilized Websockets for real-time session control to enforce strict single-device login policies.',
-      'Managed backend deployments on AWS EC2 utilizing PM2 for resource monitoring, and executed a seamless data migration from MinIO to AWS S3 to enhance scalability.',
-      'Integrated Microsoft Graph API to automate OneDrive file management and built dynamic reporting modules (Excel/PDF), reducing manual data export time.',
-      'Configured automated CI/CD workflows via GitHub Actions and strengthened system defense by implementing Rate Limiting, CAPTCHA, and resolving server header leakages.',
+    location: 'Ho Chi Minh City, Vietnam',
+    summary: 'Lead full-stack engineering across core enterprise platforms, focusing on scalable real-time audio processing pipelines, high-availability microservices, and automated cloud infrastructure.',
+    subProjects: [
+      {
+        title: 'EdTech Audio Processing & Analytics Web Application',
+        category: 'Audio Capture & Processing Platform',
+        description: 'Scalable educational assessment web application featuring continuous audio recording pipelines, automated analytical scoring, and interactive reporting dashboards.',
+        features: [
+          'Engineered a resilient audio capture pipeline with MediaRecorder, implementing client-side chunking, sequential upload, and retry mechanisms for long-running sessions up to 3 hours.',
+          'Configured 5 Laravel queue worker processes with Supervisor for asynchronous background processing, audio transcription, and analytical scoring pipelines.',
+          'Developed responsive React/TypeScript interfaces integrated with Laravel REST APIs, Supabase Auth, and WebSocket session control for real-time monitoring and single-device login enforcement.',
+          'Built interactive analytical dashboards with Chart.js and automated PDF/Excel reports visualizing assessment scores, speaking-time distribution, and performance metrics.',
+          'Accelerated frontend UI delivery speed by 30% using AI-assisted prototyping tools (Lovable/Supabase), and developed multi-format document preview modules (PDF/DOCX/TXT).'
+        ],
+        techStack: ['React', 'TypeScript', 'Laravel', 'PHP', 'PostgreSQL', 'Supabase', 'WebSockets', 'Chart.js', 'Supervisor', 'AI APIs']
+      },
+      {
+        title: 'Mobile App CMS & Backend Infrastructure',
+        category: 'CMS & Cloud Infrastructure',
+        description: 'High-availability backend architecture and Content Management System (CMS) powering mobile application features, admin workflows, and third-party media integrations.',
+        features: [
+          'Developed modular Vue.js CMS interfaces and Node.js/FeathersJS REST APIs for content management, live event tracking, and user notifications.',
+          'Integrated third-party APIs including YouTube, Vimeo, Eventbrite, and Brevo APIs with scheduled background cron jobs for automated multi-channel synchronization.',
+          'Diagnosed and resolved critical MongoDB replica-set synchronization failures (nodes stuck in recovering state) by restoring keyFile security configurations and quorum connectivity.',
+          'Deployed CMS and Node.js microservices on AWS EC2 using SSH and PM2 process manager, and executed zero-data-loss storage migration from MinIO to AWS S3.',
+          'Strengthened production security by integrating Rate Limiting, CAPTCHA bot mitigation, automated CI/CD via GitHub Actions, and Microsoft Graph API OneDrive integrations.'
+        ],
+        techStack: ['Vue.js', 'Node.js (FeathersJS)', 'MongoDB', 'AWS (EC2, S3)', 'MinIO', 'PM2', 'GitHub Actions', 'Microsoft Graph API']
+      }
     ],
-    techStack: ['ReactJS', 'VueJS', 'Node.js (FeatherJS)', 'Python', 'FastAPI', 'PHP', 'Laravel', 'MySQL', 'MongoDB', 'AWS S3/EC2', 'Supabase', 'Lovable'],
+    techStack: ['React', 'Vue.js', 'Node.js (FeathersJS)', 'Laravel', 'FastAPI', 'MongoDB', 'PostgreSQL', 'AWS (EC2, S3)', 'Supabase'],
   },
   {
     role: 'Full Stack Developer',
     company: 'Trancosmos Technology Vietnam',
     period: 'Dec 2024 - Sep 2025',
+    location: 'Ho Chi Minh City, Vietnam',
+    summary: 'Contributed to enterprise web solutions and content management workflows within a cross-functional Agile engineering team.',
     achievements: [
       'Developed and maintained backend services using Node.js, implementing RESTful APIs, authentication flows, and business logic to ensure secure and efficient data exchange with the VueJS front end.',
       'Built custom backend modules in Drupal (PHP) and optimized database queries for better performance, integrating with Twig templates to deliver dynamic content.',
       'Customized Drupal themes and developed server-side logic in PHP to support complex content workflows, deploying via Docker for consistent environments.',
       'Integrated backend APIs with VueJS components, applying responsive design principles for enhanced user experience.',
       'Implemented automated testing with Cypress to ensure stability across both backend API responses and frontend UI behavior.',
-      'Worked in a 5-member team, managing tasks with Backlog and version control with Git.',
+      'Collaborated in an Agile 5-member team, managing sprint deliverables with Backlog and Git version control.',
     ],
-    techStack: ['VueJS', 'TailwindCSS', 'Figma', 'Node.js', 'PHP', 'Drupal', 'MySQL', 'Docker', 'Cypress'],
+    techStack: ['Vue.js', 'Node.js', 'PHP', 'Drupal', 'MySQL', 'Docker', 'Cypress', 'Tailwind CSS'],
   },
 ];
